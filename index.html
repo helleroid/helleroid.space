@@ -1,517 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HELLEROID</title>
+<div class="grid">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- BANDCAMP -->
 
-  <!-- elegant serif -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <div class="block large">
 
-  <!-- clean grotesk -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <p style="opacity:.4; margin-bottom:16px;">
+      selected release / bandcamp
+    </p>
 
-  <style>
+    <!-- replace src with your bandcamp embed -->
+    <iframe
+      style="border:0; width:100%; height:470px;"
+      src="https://bandcamp.com/EmbeddedPlayer/album=0000000000/size=large/bgcol=111111/linkcol=ffffff/artwork=small/transparent=true/"
+      seamless>
+    </iframe>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      background:#050505;
-      color:#f3f3f3;
-      font-family:'Inter', sans-serif;
-      overflow-x:hidden;
-      line-height:1.5;
-    }
-
-    ::selection{
-      background:#f3f3f3;
-      color:#050505;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      width:100%;
-      display:block;
-    }
-
-    .noise{
-      position:fixed;
-      inset:0;
-      opacity:.03;
-      pointer-events:none;
-      background-image:url('https://grainy-gradients.vercel.app/noise.svg');
-      z-index:999;
-    }
-
-    .hero{
-      min-height:100vh;
-      padding:4vw;
-      position:relative;
-    }
-
-    .title{
-      position:absolute;
-      top:40px;
-      left:40px;
-      z-index:20;
-    }
-
-    .title h1{
-      font-family:'Cormorant Garamond', serif;
-      font-size:5rem;
-      font-weight:300;
-      letter-spacing:.08em;
-    }
-
-    .title p{
-      opacity:.6;
-      margin-top:10px;
-      font-size:.9rem;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:20px;
-      margin-top:140px;
-    }
-
-    .block{
-      background:#0e0e0e;
-      border:1px solid rgba(255,255,255,.06);
-      padding:20px;
-      position:relative;
-      overflow:hidden;
-      transition:.5s ease;
-      backdrop-filter:blur(10px);
-    }
-
-    .block:hover{
-      transform:translateY(-4px);
-      border-color:rgba(255,255,255,.2);
-    }
-
-    .large{
-      grid-column:span 6;
-      min-height:420px;
-    }
-
-    .medium{
-      grid-column:span 4;
-      min-height:260px;
-    }
-
-    .small{
-      grid-column:span 2;
-      min-height:180px;
-    }
-
-    .portrait{
-      background-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200');
-      background-size:cover;
-      background-position:center;
-    }
-
-    .album{
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      background:#111;
-    }
-
-    .album img{
-      margin-bottom:16px;
-      filter:grayscale(100%);
-    }
-
-    .album h2{
-      font-size:1rem;
-      font-weight:500;
-      margin-bottom:6px;
-    }
-
-    .album p{
-      opacity:.65;
-      font-size:.85rem;
-    }
-
-    .manifesto{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:flex-start;
-    }
-
-    .manifesto h3{
-      font-family:'Cormorant Garamond', serif;
-      font-size:3rem;
-      line-height:1;
-      font-weight:300;
-      margin-bottom:20px;
-      max-width:500px;
-    }
-
-    .manifesto p{
-      opacity:.65;
-      max-width:420px;
-    }
-
-    .floating-text{
-      position:absolute;
-      bottom:20px;
-      right:20px;
-      opacity:.08;
-      font-size:5rem;
-      font-family:'Cormorant Garamond', serif;
-    }
-
-    .section{
-      padding:140px 4vw;
-    }
-
-    .section-title{
-      margin-bottom:60px;
-    }
-
-    .section-title h2{
-      font-family:'Cormorant Garamond', serif;
-      font-size:3rem;
-      font-weight:300;
-    }
-
-    .section-title p{
-      opacity:.5;
-      margin-top:10px;
-    }
-
-    .albums-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
-    }
-
-    .release{
-      border-top:1px solid rgba(255,255,255,.15);
-      padding-top:20px;
-    }
-
-    .release img{
-      margin-bottom:16px;
-      transition:.6s ease;
-    }
-
-    .release:hover img{
-      transform:scale(1.02);
-    }
-
-    .release span{
-      opacity:.4;
-      font-size:.8rem;
-    }
-
-    .release h3{
-      margin:10px 0;
-      font-weight:400;
-    }
-
-    .release p{
-      opacity:.65;
-      font-size:.92rem;
-      margin-bottom:20px;
-    }
-
-    .button{
-      display:inline-block;
-      border:1px solid rgba(255,255,255,.15);
-      padding:10px 18px;
-      font-size:.85rem;
-      transition:.4s ease;
-    }
-
-    .button:hover{
-      background:#fff;
-      color:#000;
-    }
-
-    .timeline{
-      border-left:1px solid rgba(255,255,255,.15);
-      margin-left:10px;
-      padding-left:40px;
-    }
-
-    .event{
-      margin-bottom:70px;
-      position:relative;
-    }
-
-    .event::before{
-      content:'';
-      width:10px;
-      height:10px;
-      background:#fff;
-      border-radius:50%;
-      position:absolute;
-      left:-46px;
-      top:8px;
-    }
-
-    .event span{
-      opacity:.4;
-      font-size:.85rem;
-    }
-
-    .event h4{
-      margin:10px 0;
-      font-size:1.3rem;
-      font-weight:400;
-    }
-
-    .event p{
-      opacity:.65;
-      max-width:650px;
-    }
-
-    footer{
-      padding:80px 4vw;
-      border-top:1px solid rgba(255,255,255,.08);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:20px;
-    }
-
-    footer p{
-      opacity:.5;
-      font-size:.85rem;
-    }
-
-    @media(max-width:900px){
-
-      .large,
-      .medium,
-      .small{
-        grid-column:span 12;
-      }
-
-      .title h1{
-        font-size:3rem;
-      }
-
-      .manifesto h3{
-        font-size:2.2rem;
-      }
-
-    }
-
-  </style>
-</head>
-
-<body>
-
-<div class="noise"></div>
-
-<section class="hero">
-
-  <div class="title">
-    <h1>HELLEROID</h1>
-    <p>feeling through hearing</p>
   </div>
 
-  <div class="grid">
 
-    <div class="block large manifesto">
-      <h3>
-        an artist desktop from another timeline
-      </h3>
+  <!-- THOUGHT FIELD -->
 
-      <p>
-        archive of sound, atmosphere,
-        memory architecture,
-        ritual listening,
-        movement and transformation
-      </p>
+  <div class="block medium manifesto">
 
-      <div class="floating-text">
-        2026
+    <p style="opacity:.4; margin-bottom:20px;">
+      transmission notes
+    </p>
+
+    <div class="thought-carousel">
+
+      <div class="thought active">
+        sound as emotional architecture
       </div>
-    </div>
 
-    <div class="block medium portrait"></div>
-
-    <div class="block medium album">
-      <img src="https://picsum.photos/600/600?1">
-
-      <h2>memory chamber I</h2>
-      <p>
-        field recordings, bass resonance,
-        fragmented emotional architecture
-      </p>
-    </div>
-
-    <div class="block small">
-      <p style="opacity:.5;">
-        soundcloud transmission archive
-      </p>
-    </div>
-
-    <div class="block small">
-      <p style="opacity:.5;">
-        movement / sonic body practices
-      </p>
-    </div>
-
-    <div class="block medium">
-      <p style="opacity:.4; margin-bottom:20px;">
-        currently exploring:
-      </p>
-
-      <h3 style="font-family:'Cormorant Garamond', serif; font-size:2rem; font-weight:300;">
+      <div class="thought">
         healing through hearing
-      </h3>
+      </div>
+
+      <div class="thought">
+        memory exists in frequencies
+      </div>
+
+      <div class="thought">
+        atmosphere changes perception
+      </div>
+
+    </div>
+
+    <div class="floating-text">
+      live
     </div>
 
   </div>
 
-</section>
 
-<section class="section">
+  <!-- SOUNDCLOUD -->
 
-  <div class="section-title">
-    <h2>selected releases</h2>
-    <p>albums / archives / sonic environments</p>
-  </div>
+  <div class="block large">
 
-  <div class="albums-grid">
+    <p style="opacity:.4; margin-bottom:16px;">
+      soundcloud transmissions
+    </p>
 
-    <div class="release">
-      <img src="https://picsum.photos/700/700?2">
-
-      <span>2025</span>
-
-      <h3>inner transition</h3>
-
-      <p>
-        ambient structures written between
-        isolation, movement practices,
-        and ritual listening sessions.
-      </p>
-
-      <a href="#" class="button">
-        bandcamp
-      </a>
-    </div>
-
-    <div class="release">
-      <img src="https://picsum.photos/700/700?3">
-
-      <span>2024</span>
-
-      <h3>signal memory</h3>
-
-      <p>
-        processed bass, emotional fragments,
-        dream recordings and spatial atmospheres.
-      </p>
-
-      <a href="#" class="button">
-        soundcloud
-      </a>
-    </div>
-
-    <div class="release">
-      <img src="https://picsum.photos/700/700?4">
-
-      <span>2023</span>
-
-      <h3>field resonance</h3>
-
-      <p>
-        field recordings transformed into
-        meditative listening environments.
-      </p>
-
-      <a href="#" class="button">
-        archive
-      </a>
-    </div>
+    <!-- replace src with your soundcloud embed -->
+    <iframe
+      width="100%"
+      height="300"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23050505&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+    </iframe>
 
   </div>
 
-</section>
 
-<section class="section">
+  <!-- VISUAL BLOCK -->
 
-  <div class="section-title">
-    <h2>creative timeline</h2>
-    <p>studies / performances / transformation</p>
-  </div>
+  <div class="block medium portrait"></div>
 
-  <div class="timeline">
 
-    <div class="event">
-      <span>2008</span>
-      <h4>military cultural center</h4>
-      <p>
-        piano studies and first experiences
-        with disciplined musical structure.
-      </p>
-    </div>
+  <!-- SMALL INFO BLOCK -->
 
-    <div class="event">
-      <span>2016</span>
-      <h4>experimental transition</h4>
-      <p>
-        movement toward sound experimentation,
-        emotional atmospheres and underground culture.
-      </p>
-    </div>
+  <div class="block small">
 
-    <div class="event">
-      <span>2021</span>
-      <h4>interdisciplinary performances</h4>
-      <p>
-        combining sound, movement,
-        visual architecture and ritual presence.
-      </p>
-    </div>
-
-    <div class="event">
-      <span>2025</span>
-      <h4>inner inter foundation</h4>
-      <p>
-        collective sonic and somatic practices,
-        healing environments and experimental gatherings.
-      </p>
-    </div>
+    <p style="opacity:.35;">
+      archive of sound,
+      movement,
+      visual studies,
+      and ritual listening
+    </p>
 
   </div>
 
-</section>
 
-<footer>
+  <!-- SMALL LINK BLOCK -->
 
-  <p>
-    helleroid.space
-  </p>
+  <div class="block small">
 
-  <p>
-    connected to innerinter.net
-  </p>
+    <p style="opacity:.35;">
+      connected to
+      innerinter.net
+    </p>
 
-</footer>
+  </div>
 
-</body>
+</div>
+
 </html>
