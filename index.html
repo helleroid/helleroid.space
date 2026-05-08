@@ -1,109 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HELLEROID</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#050505;
+      color:#f3f3f3;
+      font-family:'Inter', sans-serif;
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .noise{
+      position:fixed;
+      inset:0;
+      opacity:.03;
+      pointer-events:none;
+      background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+      z-index:999;
+    }
+
+    /* HEADER */
+
+    header{
+      padding:60px 4vw 20px;
+    }
+
+    h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:4rem;
+      font-weight:300;
+      letter-spacing:.05em;
+    }
+
+    .subtitle{
+      opacity:.6;
+      margin-top:10px;
+      font-size:.9rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    /* MAIN GRID */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:20px;
+      padding:40px 4vw;
+    }
+
+    .block{
+      background:#0e0e0e;
+      border:1px solid rgba(255,255,255,.06);
+      padding:20px;
+    }
+
+    .large{ grid-column:span 6; min-height:420px; }
+    .medium{ grid-column:span 6; min-height:260px; }
+
+    /* BANDCAMP + SOUNDCLOUD LABELS */
+
+    .label{
+      opacity:.4;
+      font-size:.8rem;
+      margin-bottom:10px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    /* THOUGHT CAROUSEL */
+
+    .thoughts{
+      position:relative;
+      min-height:160px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    .thought{
+      position:absolute;
+      opacity:0;
+      transform:translateY(10px);
+      transition:1s ease;
+      font-family:'Cormorant Garamond', serif;
+      font-size:2rem;
+      font-weight:300;
+      max-width:420px;
+    }
+
+    .thought.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* INFO BLOCKS */
+
+    .info{
+      opacity:.4;
+      font-size:.9rem;
+    }
+
+    /* TIMELINE */
+
+    .timeline{
+      padding:80px 4vw;
+    }
+
+    .timeline h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:2.5rem;
+      font-weight:300;
+      margin-bottom:40px;
+    }
+
+    .event{
+      margin-bottom:40px;
+      border-left:1px solid rgba(255,255,255,.2);
+      padding-left:20px;
+    }
+
+    .event span{
+      opacity:.4;
+      font-size:.85rem;
+    }
+
+    .event h3{
+      font-weight:400;
+      margin:5px 0;
+    }
+
+    .event p{
+      opacity:.6;
+      max-width:600px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+      .large,.medium{
+        grid-column:span 12;
+      }
+
+      h1{
+        font-size:2.8rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<header>
+  <h1>HELLEROID</h1>
+  <div class="subtitle">feeling through hearing</div>
+</header>
+
+<!-- MAIN GRID -->
 <div class="grid">
 
-  <!-- BANDCAMP -->
-
+  <!-- BANDCAMP (FIRST) -->
   <div class="block large">
 
-    <p style="opacity:.4; margin-bottom:16px;">
-      selected release / bandcamp
-    </p>
+    <div class="label">Bandcamp</div>
 
-    <!-- replace src with your bandcamp embed -->
     <iframe
-      style="border:0; width:100%; height:470px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=0000000000/size=large/bgcol=111111/linkcol=ffffff/artwork=small/transparent=true/"
+      style="border:0; width:100%; height:420px;"
+      src="https://bandcamp.com/EmbeddedPlayer/album=YOUR_ALBUM_ID/size=large/bgcol=111111/linkcol=ffffff/artwork=small/transparent=true/"
       seamless>
     </iframe>
 
   </div>
 
-
-  <!-- THOUGHT FIELD -->
-
-  <div class="block medium manifesto">
-
-    <p style="opacity:.4; margin-bottom:20px;">
-      transmission notes
-    </p>
-
-    <div class="thought-carousel">
-
-      <div class="thought active">
-        sound as emotional architecture
-      </div>
-
-      <div class="thought">
-        healing through hearing
-      </div>
-
-      <div class="thought">
-        memory exists in frequencies
-      </div>
-
-      <div class="thought">
-        atmosphere changes perception
-      </div>
-
-    </div>
-
-    <div class="floating-text">
-      live
-    </div>
-
-  </div>
-
-
   <!-- SOUNDCLOUD -->
-
   <div class="block large">
 
-    <p style="opacity:.4; margin-bottom:16px;">
-      soundcloud transmissions
-    </p>
+    <div class="label">SoundCloud</div>
 
-    <!-- replace src with your soundcloud embed -->
     <iframe
       width="100%"
       height="300"
       scrolling="no"
       frameborder="no"
       allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/000000000&color=%23050505&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+      src="https://w.soundcloud.com/player/?url=YOUR_TRACK_URL">
     </iframe>
 
   </div>
 
+  <!-- THOUGHT FIELD -->
+  <div class="block medium">
 
-  <!-- VISUAL BLOCK -->
+    <div class="label">Transmission field</div>
 
-  <div class="block medium portrait"></div>
+    <div class="thoughts">
 
+      <div class="thought active">sound as emotional architecture</div>
+      <div class="thought">healing through hearing</div>
+      <div class="thought">memory exists in frequencies</div>
+      <div class="thought">atmosphere shapes perception</div>
 
-  <!-- SMALL INFO BLOCK -->
-
-  <div class="block small">
-
-    <p style="opacity:.35;">
-      archive of sound,
-      movement,
-      visual studies,
-      and ritual listening
-    </p>
+    </div>
 
   </div>
 
+  <!-- INFO -->
+  <div class="block medium">
 
-  <!-- SMALL LINK BLOCK -->
+    <div class="label">Archive note</div>
 
-  <div class="block small">
-
-    <p style="opacity:.35;">
-      connected to
-      innerinter.net
+    <p class="info">
+      archive of sound, movement, visual studies and ritual listening.
+      connected to innerinter as a collective practice field.
     </p>
 
   </div>
 
 </div>
 
+<!-- TIMELINE -->
+<section class="timeline">
+
+  <h2>creative timeline</h2>
+
+  <div class="event">
+    <span>2008</span>
+    <h3>piano / military cultural center</h3>
+    <p>early structured musical discipline and classical training.</p>
+  </div>
+
+  <div class="event">
+    <span>2016</span>
+    <h3>experimental sound shift</h3>
+    <p>transition into sound exploration and emotional abstraction.</p>
+  </div>
+
+  <div class="event">
+    <span>2021</span>
+    <h3>interdisciplinary performance work</h3>
+    <p>sound, movement, space and ritual-based composition.</p>
+  </div>
+
+  <div class="event">
+    <span>2025</span>
+    <h3>inner inter formation</h3>
+    <p>collective practice, sound chamber and somatic research.</p>
+  </div>
+
+</section>
+
+<script>
+
+const thoughts = document.querySelectorAll('.thought');
+let i = 0;
+
+setInterval(() => {
+  thoughts[i].classList.remove('active');
+  i = (i + 1) % thoughts.length;
+  thoughts[i].classList.add('active');
+}, 4000);
+
+</script>
+
+</body>
 </html>
