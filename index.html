@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* RESET */
 
 *{
   margin:0;
@@ -33,14 +34,14 @@ body::before{
   background-image:url('https://grainy-gradients.vercel.app/noise.svg');
 }
 
-img{
-  width:100%;
-  display:block;
+a{
+  color:#f2f2f2;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2);
 }
 
-iframe{
-  width:100%;
-  border:none;
+a:hover{
+  opacity:.7;
 }
 
 section{
@@ -49,9 +50,7 @@ section{
 
 /* TYPOGRAPHY */
 
-h1,
-h2,
-h3{
+h1,h2,h3{
   font-family:'MedievalSharp', cursive;
   font-weight:400;
 }
@@ -95,67 +94,7 @@ p{
 
 .hero p{
   max-width:700px;
-  font-size:1rem;
 }
-  <section>
-
-<h2>
-audio control / transmission access
-</h2>
-
-<div class="grid">
-
-<div class="card medium">
-
-<div class="small-label">
-primary access points
-</div>
-
-<p>
-choose entry into the sound system:
-</p>
-
-<br>
-
-<p>
-<a href="https://bandcamp.com" target="_blank">Bandcamp Releases</a>
-</p>
-
-<p>
-<a href="https://soundcloud.com" target="_blank">SoundCloud Archive</a>
-</p>
-
-<p>
-<a href="https://youtube.com" target="_blank">YouTube Works</a>
-</p>
-
-<p>
-<a href="https://innerinter.net" target="_blank">Innerinter Network</a>
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-  <div class="release">
-
-<div class="small-label">
-soundcloud transmission
-</div>
-
-<iframe width="100%" height="166" scrolling="no" frameborder="no" 
-allow="autoplay"
-src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/YOUR_TRACK">
-</iframe>
-
-</div>
-
-  <iframe width="100%" height="450" scrolling="no" frameborder="no"
-allow="autoplay"
-src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/YOUR_PROFILE/sets/YOUR_PLAYLIST&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false">
-</iframe>
 
 /* GRID */
 
@@ -171,19 +110,11 @@ src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/YOUR_PROFILE/
   padding:28px;
 }
 
-.large{
-  grid-column:span 7;
-}
+.large{ grid-column:span 7; }
+.medium{ grid-column:span 5; }
+.full{ grid-column:span 12; }
 
-.medium{
-  grid-column:span 5;
-}
-
-.full{
-  grid-column:span 12;
-}
-
-/* THOUGHTS */
+/* THOUGHT */
 
 .thought-box{
   min-height:280px;
@@ -194,9 +125,18 @@ src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/YOUR_PROFILE/
 .thought{
   font-family:'MedievalSharp', cursive;
   font-size:3rem;
-  line-height:1.1;
-  opacity:.9;
-  max-width:600px;
+}
+
+/* RELEASE */
+
+.release{
+  margin-bottom:120px;
+}
+
+.release iframe{
+  margin-top:30px;
+  width:100%;
+  border:none;
 }
 
 /* TIMELINE */
@@ -214,25 +154,6 @@ src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/YOUR_PROFILE/
   text-transform:uppercase;
 }
 
-.timeline-item h3{
-  margin-top:12px;
-}
-
-.timeline-item p{
-  max-width:700px;
-  margin-top:12px;
-}
-
-/* RELEASES */
-
-.release{
-  margin-bottom:120px;
-}
-
-.release iframe{
-  margin-top:30px;
-}
-
 /* FOOTER */
 
 footer{
@@ -240,37 +161,17 @@ footer{
   border-top:1px solid rgba(255,255,255,.08);
   display:flex;
   justify-content:space-between;
-  gap:30px;
   flex-wrap:wrap;
-}
-
-footer p{
-  opacity:.45;
-  font-size:.85rem;
+  gap:20px;
+  opacity:.6;
 }
 
 /* RESPONSIVE */
 
 @media(max-width:900px){
-
-  h1{
-    font-size:4rem;
-  }
-
-  h2{
-    font-size:2.5rem;
-  }
-
-  .thought{
-    font-size:2rem;
-  }
-
-  .large,
-  .medium,
-  .full{
-    grid-column:span 12;
-  }
-
+  h1{ font-size:4rem; }
+  h2{ font-size:2.5rem; }
+  .large,.medium,.full{ grid-column:span 12; }
 }
 
 </style>
@@ -286,15 +187,70 @@ footer p{
 HELLEROID / feeling through hearing
 </div>
 
-<h1>
-HELLEROID
-</h1>
+<h1>HELLEROID</h1>
 
 <p>
-Multidisciplinary sound artist exploring emotional architecture,
-ritual listening, memory systems, bass resonance and transformation through sound.
-Projects include oana oama, pitch patrol, bvvvdmo, jasmine liquer and co-founding obriy label.
+Multidisciplinary sound practice exploring emotional architecture,
+ritual listening, memory systems and transformation through sound.
 </p>
+
+</section>
+
+<!-- AUDIO CONTROL -->
+
+<section>
+
+<h2>audio control / transmission access</h2>
+
+<div class="grid">
+
+<div class="card full">
+
+<div class="small-label">primary access points</div>
+
+<p><a href="https://bandcamp.com" target="_blank">Bandcamp Releases</a></p>
+<p><a href="https://soundcloud.com" target="_blank">SoundCloud Archive</a></p>
+<p><a href="https://youtube.com" target="_blank">YouTube Works</a></p>
+<p><a href="https://innerinter.net" target="_blank">Innerinter Network</a></p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SOUND CLOUD (EMPTY PLACEHOLDER SECTION) -->
+
+<section>
+
+<h2>soundcloud archive</h2>
+
+<div class="release">
+
+<div class="small-label">soundcloud transmission (placeholder)</div>
+
+<!-- SOUND CLOUD EMBED GOES HERE -->
+<!-- replace src with your track or playlist -->
+
+<iframe height="166"
+src=""
+allow="autoplay">
+</iframe>
+
+</div>
+
+<div class="release">
+
+<div class="small-label">unreleased field (placeholder playlist)</div>
+
+<!-- PLAYLIST EMBED GOES HERE -->
+
+<iframe height="450"
+src=""
+allow="autoplay">
+</iframe>
+
+</div>
 
 </section>
 
@@ -306,34 +262,24 @@ Projects include oana oama, pitch patrol, bvvvdmo, jasmine liquer and co-foundin
 
 <div class="card large">
 
-<div class="small-label">
-transmission field
-</div>
+<div class="small-label">transmission field</div>
 
 <div class="thought-box">
-<div class="thought">
-healing through hearing
-</div>
+<div class="thought">healing through hearing</div>
 </div>
 
 </div>
 
 <div class="card medium">
 
-<div class="small-label">
-archive note
-</div>
+<div class="small-label">archive note</div>
 
 <p>
-helleroid.space is a personal archive:
-portfolio, sound environment, releases,
-performances and philosophy.
+helleroid.space is a personal archive and listening system.
 </p>
 
-<br>
-
 <p>
-innerinter.net functions separately as a collective laboratory focused on movement, sound chamber practices and somatic exploration.
+innerinter.net functions as a collective research space.
 </p>
 
 </div>
@@ -342,75 +288,21 @@ innerinter.net functions separately as a collective laboratory focused on moveme
 
 </section>
 
-<!-- CREATIVE TIMELINE -->
+<!-- BANDCAMP RELEASES -->
 
 <section>
 
-<h2>
-creative timeline
-</h2>
-
-<div class="timeline-item">
-<span>2002</span>
-<h3>military cultural center</h3>
-<p>
-early piano studies and classical musical structure.
-</p>
-</div>
-
-<div class="timeline-item">
-<span>2016</span>
-<h3>experimental transition</h3>
-<p>
-movement into sound experimentation,
-emotional abstraction and underground electronic culture.
-</p>
-</div>
-
-<div class="timeline-item">
-<span>2021</span>
-<h3>interdisciplinary performance work</h3>
-<p>
-combining sound, movement, visual atmosphere and ritual composition.
-</p>
-</div>
-
-<div class="timeline-item">
-<span>2025</span>
-<h3>inner inter</h3>
-<p>
-collective practice, sound chamber and somatic research.
-</p>
-</div>
-
-</section>
-
-<!-- RELEASES -->
-
-<section>
-
-<h2>
-selected transmissions
-</h2>
+<h2>selected transmissions</h2>
 
 <div class="release">
 
-<div class="small-label">
-May 2024 / MYSTICTRAX
-</div>
+<div class="small-label">May 2024 / MYSTICTRAX</div>
 
-<h3>
-free transmission
-</h3>
+<h3>free transmission</h3>
 
-<p>
-Five multi-genre pieces exploring psychodynamics,
-subwaves, fragmented textures, field recordings,
-machines and live instrumentation.
-</p>
+<p>Multi-genre exploration of sound fragmentation and psychodynamics.</p>
 
-<iframe
-style="height:620px;"
+<iframe style="height:620px;"
 src="https://bandcamp.com/EmbeddedPlayer/album=2290233678/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/"
 seamless>
 </iframe>
@@ -419,21 +311,13 @@ seamless>
 
 <div class="release">
 
-<div class="small-label">
-self released EP
-</div>
+<div class="small-label">self released EP</div>
 
-<h3>
-mirrorloop
-</h3>
+<h3>mirrorloop</h3>
 
-<p>
-Recursive emotional structures,
-mirrored atmospheres and rhythmic memory states.
-</p>
+<p>Recursive emotional structures and mirrored sound states.</p>
 
-<iframe
-style="height:620px;"
+<iframe style="height:620px;"
 src="https://bandcamp.com/EmbeddedPlayer/album=33132963/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/"
 seamless>
 </iframe>
@@ -442,21 +326,13 @@ seamless>
 
 <div class="release">
 
-<div class="small-label">
-December 2023
-</div>
+<div class="small-label">December 2023</div>
 
-<h3>
-mental_filter
-</h3>
+<h3>mental_filter</h3>
 
-<p>
-Genre-fluid guided journey through dark ambience,
-floating harmonies and emotional rupture.
-</p>
+<p>Genre-fluid ambient and emotional rupture study.</p>
 
-<iframe
-style="height:620px;"
+<iframe style="height:620px;"
 src="https://bandcamp.com/EmbeddedPlayer/album=112079782/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/"
 seamless>
 </iframe>
@@ -465,19 +341,15 @@ seamless>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
-<p>
-HELLEROID.SPACE
-</p>
-
-<p>
-connected to INNERINTER.NET
-</p>
+<p>HELLEROID.SPACE</p>
+<p>connected to INNERINTER.NET</p>
 
 </footer>
 
 </body>
 </html>
-```
 
