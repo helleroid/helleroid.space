@@ -1,459 +1,426 @@
+# Replace your current `index.html` with this cleaner structure
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HELLEROID</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HELLEROID</title>
 
- <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<style>
 
-    body{
-      background:#050505;
-      color:#f3f3f3;
-font-family:'Cousine', monospace;
-      line-height:1.5;
-      overflow-x:hidden;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .noise{
-      position:fixed;
-      inset:0;
-      opacity:.03;
-      pointer-events:none;
-      background-image:url('https://grainy-gradients.vercel.app/noise.svg');
-      z-index:999;
-    }
-
-    /* HEADER */
-
-    header{
-      padding:60px 4vw 20px;
-    }
-
-    h1{
-@font-face {
-font-family:'MedievalSharp', cursive;
-  src: url('assets/fonts/ritual-font.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-    }
 
-    .subtitle{
-      opacity:.6;
-      margin-top:10px;
-      font-size:.9rem;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-    }
+body{
+  background:#050505;
+  color:#f2f2f2;
+  font-family:'Cousine', monospace;
+  overflow-x:hidden;
+  line-height:1.7;
+}
 
-    /* MAIN GRID */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  opacity:.03;
+  pointer-events:none;
+  background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:20px;
-      padding:40px 4vw;
-    }
+img{
+  width:100%;
+  display:block;
+}
 
-    
+iframe{
+  width:100%;
+  border:none;
+}
 
-    .label{
-      opacity:.4;
-      font-size:.8rem;
-      margin-bottom:10px;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
+section{
+  padding:120px 6vw;
+}
 
-    /* THOUGHT CAROUSEL */
+/* TYPOGRAPHY */
 
-    .thoughts{
-      position:relative;
-      min-height:160px;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-    }
+h1,
+h2,
+h3{
+  font-family:'MedievalSharp', cursive;
+  font-weight:400;
+}
 
-    .thought{
-      position:absolute;
-      opacity:0;
-      transform:translateY(10px);
-      transition:1s ease;
-      font-family:'Cormorant Garamond', serif;
-      font-size:2rem;
-      font-weight:300;
-      max-width:420px;
-    }
+h1{
+  font-size:7rem;
+  line-height:.9;
+  margin-bottom:20px;
+}
 
-    .thought.active{
-      opacity:1;
-      transform:translateY(0);
-    }
+h2{
+  font-size:3.5rem;
+  margin-bottom:60px;
+}
 
-    /* INFO BLOCKS */
+h3{
+  font-size:1.8rem;
+  margin-bottom:20px;
+}
 
-    .info{
-      opacity:.4;
-      font-size:.9rem;
-    }
+p{
+  opacity:.7;
+}
 
-    /* TIMELINE */
+.small-label{
+  opacity:.4;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.75rem;
+  margin-bottom:20px;
+}
 
-    .timeline{
-      padding:80px 4vw;
-    }
+/* HERO */
 
-    .timeline h2{
-      font-family:'Cormorant Garamond', serif;
-      font-size:2.5rem;
-      font-weight:300;
-      margin-bottom:40px;
-    }
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 
-    .event{
-      margin-bottom:40px;
-      border-left:1px solid rgba(255,255,255,.2);
-      padding-left:20px;
-    }
+.hero p{
+  max-width:700px;
+  font-size:1rem;
+}
 
-    .event span{
-      opacity:.4;
-      font-size:.85rem;
-    }
+/* GRID */
 
-    .event h3{
-      font-weight:400;
-      margin:5px 0;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:24px;
+}
 
-    .event p{
-      opacity:.6;
-      max-width:600px;
-    }
+.card{
+  background:#0d0d0d;
+  border:1px solid rgba(255,255,255,.08);
+  padding:28px;
+}
 
-    /* RESPONSIVE */
+.large{
+  grid-column:span 7;
+}
 
-    @media(max-width:900px){
-      .large,.medium{
-        grid-column:span 12;
-      }
+.medium{
+  grid-column:span 5;
+}
 
-      h1{
-        font-size:2.8rem;
-      }
-    }
+.full{
+  grid-column:span 12;
+}
 
-  </style>
+/* THOUGHTS */
+
+.thought-box{
+  min-height:280px;
+  display:flex;
+  align-items:center;
+}
+
+.thought{
+  font-family:'MedievalSharp', cursive;
+  font-size:3rem;
+  line-height:1.1;
+  opacity:.9;
+  max-width:600px;
+}
+
+/* TIMELINE */
+
+.timeline-item{
+  border-left:1px solid rgba(255,255,255,.15);
+  padding-left:24px;
+  margin-bottom:70px;
+}
+
+.timeline-item span{
+  opacity:.4;
+  font-size:.8rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.timeline-item h3{
+  margin-top:12px;
+}
+
+.timeline-item p{
+  max-width:700px;
+  margin-top:12px;
+}
+
+/* RELEASES */
+
+.release{
+  margin-bottom:120px;
+}
+
+.release iframe{
+  margin-top:30px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:80px 6vw;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+footer p{
+  opacity:.45;
+  font-size:.85rem;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  h1{
+    font-size:4rem;
+  }
+
+  h2{
+    font-size:2.5rem;
+  }
+
+  .thought{
+    font-size:2rem;
+  }
+
+  .large,
+  .medium,
+  .full{
+    grid-column:span 12;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="noise"></div>
+<!-- HERO -->
 
-<header>
-  <h1>HELLEROID</h1>
-  <div class="subtitle">feeling through hearing</div>
-</header>
+<section class="hero">
 
-<!-- MAIN GRID -->
+<div class="small-label">
+HELLEROID / feeling through hearing
+</div>
+
+<h1>
+HELLEROID
+</h1>
+
+<p>
+Multidisciplinary sound artist exploring emotional architecture,
+ritual listening, memory systems, bass resonance and transformation through sound.
+Projects include oana oama, pitch patrol, bvvvdmo, jasmine liquer and co-founding obriy label.
+</p>
+
+</section>
+
+<!-- TOP GRID -->
+
+<section>
+
 <div class="grid">
 
-  <!-- BANDCAMP (FIRST) -->
-  <div class="block large">
+<div class="card large">
 
-    <div class="label">Bandcamp</div>
+<div class="small-label">
+transmission field
+</div>
 
-    <iframe
-      style="border:0; width:100%; height:420px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=YOUR_ALBUM_ID/size=large/bgcol=111111/linkcol=ffffff/artwork=small/transparent=true/"
-      seamless>
-    </iframe>
-
-  </div>
-
-  <!-- SOUNDCLOUD -->
-  <div class="block large">
-
-    <div class="label">SoundCloud</div>
-
-    <iframe
-      width="100%"
-      height="300"
-      scrolling="no"
-      frameborder="no"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=YOUR_TRACK_URL">
-    </iframe>
-
-  </div>
-
-  <!-- THOUGHT FIELD -->
-  <div class="block medium">
-
-    <div class="label">Transmission field</div>
-
-    <div class="thoughts">
-
-      <div class="thought active">sound as emotional architecture</div>
-      <div class="thought">healing through hearing</div>
-      <div class="thought">memory exists in frequencies</div>
-      <div class="thought">atmosphere shapes perception</div>
-
-    </div>
-
-  </div>
-
-  <!-- INFO -->
-  <div class="block medium">
-
-    <div class="label">Archive note</div>
-
-    <p class="info">
-      archive of sound, movement, visual studies and ritual listening.
-      connected to innerinter as a collective practice field.
-    </p>
-
-  </div>
+<div class="thought-box">
+<div class="thought">
+healing through hearing
+</div>
+</div>
 
 </div>
 
-<!-- TIMELINE -->
-<section class="timeline">
+<div class="card medium">
 
-  <h2>creative timeline</h2>
+<div class="small-label">
+archive note
+</div>
 
-  <div class="event">
-    <span>2002</span>
-    <h3>piano / military cultural center</h3>
-    <p>early structured musical discipline and classical training.</p>
-  </div>
+<p>
+helleroid.space is a personal archive:
+portfolio, sound environment, releases,
+performances and philosophy.
+</p>
 
-  <div class="event">
-    <span>2016</span>
-    <h3>experimental sound shift</h3>
-    <p>transition into sound exploration and emotional abstraction.</p>
-  </div>
+<br>
 
-  <div class="event">
-    <span>2021</span>
-    <h3>interdisciplinary performance work</h3>
-    <p>sound, movement, space and ritual-based composition.</p>
-  </div>
+<p>
+innerinter.net functions separately as a collective laboratory focused on movement, sound chamber practices and somatic exploration.
+</p>
 
-  <div class="event">
-    <span>2025</span>
-    <h3>inner inter formation</h3>
-    <p>collective practice, sound chamber and somatic research.</p>
-  </div>
+</div>
+
+</div>
 
 </section>
-<section class="timeline">
 
-  <h2>selected transmissions</h2>
+<!-- CREATIVE TIMELINE -->
 
-  <!-- FREE TRANSMISSION -->
+<section>
 
-  <div class="event">
+<h2>
+creative timeline
+</h2>
 
-    <span>May 2024 / MYSTICTRAX</span>
+<div class="timeline-item">
+<span>2002</span>
+<h3>military cultural center</h3>
+<p>
+early piano studies and classical musical structure.
+</p>
+</div>
 
-    <h3>free transmission</h3>
+<div class="timeline-item">
+<span>2016</span>
+<h3>experimental transition</h3>
+<p>
+movement into sound experimentation,
+emotional abstraction and underground electronic culture.
+</p>
+</div>
 
-    <p>
-      5 multi-genre pieces written and produced by helleroid,
-      exploring psychodynamics, subwaves, fragmented textures,
-      field recordings, machines and live instrumentation.
-    </p>
+<div class="timeline-item">
+<span>2021</span>
+<h3>interdisciplinary performance work</h3>
+<p>
+combining sound, movement, visual atmosphere and ritual composition.
+</p>
+</div>
 
-    <p>
-      A transformative sonic journey between collapse and clarity,
-      creating an escape room for reconnection with the source.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:470px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=2290233678/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-
-  <!-- JUST A SIGNAL -->
-
-  <div class="event">
-
-    <span>single</span>
-
-    <h3>just a signal</h3>
-
-    <p>
-      emotional transmission fragment /
-      intimate atmospheric signal work.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:442px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/track=1237697943/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-
-  <!-- PARALLELS -->
-
-  <div class="event">
-
-    <span>single / ochi fundraiser compilation</span>
-
-    <h3>parallels</h3>
-
-    <p>
-      contribution to the OCHI fundraiser compilation,
-      exploring fractured emotional continuity and parallel realities.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:470px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=3432370513/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/track=3809009015/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-
-  <!-- MIRRORLOOP -->
-
-  <div class="event">
-
-    <span>EP / self released</span>
-
-    <h3>mirrorloop</h3>
-
-    <p>
-      recursive emotional structures,
-      mirrored atmospheres and rhythmic memory states.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:470px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=33132963/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-
-  <!-- BREAKWATER -->
-
-  <div class="event">
-
-    <span>single / self released</span>
-
-    <h3>breakwater</h3>
-
-    <p>
-      submerged tension,
-      rhythmic collapse and floating reconstruction.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:442px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/track=3078427265/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-
-  <!-- MENTAL FILTER -->
-
-  <div class="event">
-
-    <span>December 2023</span>
-
-    <h3>mental_filter</h3>
-
-    <p>
-      A genre-fluid guided journey through dark ambience,
-      floating harmonies, trip hop structures and emotional rupture.
-    </p>
-
-    <p>
-      Driven by concern about gender, racial inequality
-      and ecological instability.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:470px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=112079782/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-
-  <!-- NOT OK -->
-
-  <div class="event">
-
-    <span>charity compilation</span>
-
-    <h3>NOT OK</h3>
-
-    <p>
-      Written in response to the beginning of the full-scale invasion of Ukraine,
-      documenting shock, fear, displacement and fragmented perception.
-    </p>
-
-    <p>
-      A spoken emotional archive between silence,
-      memory loops and the sound of iron wings.
-    </p>
-
-    <iframe
-      style="border:0; width:100%; height:470px; margin-top:20px;"
-      src="https://bandcamp.com/EmbeddedPlayer/album=3259420592/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/track=4019346266/transparent=true/"
-      seamless
-      loading="lazy">
-    </iframe>
-
-  </div>
+<div class="timeline-item">
+<span>2025</span>
+<h3>inner inter</h3>
+<p>
+collective practice, sound chamber and somatic research.
+</p>
+</div>
 
 </section>
-<script>
 
-const thoughts = document.querySelectorAll('.thought');
-let i = 0;
+<!-- RELEASES -->
 
-setInterval(() => {
-  thoughts[i].classList.remove('active');
-  i = (i + 1) % thoughts.length;
-  thoughts[i].classList.add('active');
-}, 4000);
+<section>
 
-</script>
+<h2>
+selected transmissions
+</h2>
+
+<div class="release">
+
+<div class="small-label">
+May 2024 / MYSTICTRAX
+</div>
+
+<h3>
+free transmission
+</h3>
+
+<p>
+Five multi-genre pieces exploring psychodynamics,
+subwaves, fragmented textures, field recordings,
+machines and live instrumentation.
+</p>
+
+<iframe
+style="height:620px;"
+src="https://bandcamp.com/EmbeddedPlayer/album=2290233678/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/"
+seamless>
+</iframe>
+
+</div>
+
+<div class="release">
+
+<div class="small-label">
+self released EP
+</div>
+
+<h3>
+mirrorloop
+</h3>
+
+<p>
+Recursive emotional structures,
+mirrored atmospheres and rhythmic memory states.
+</p>
+
+<iframe
+style="height:620px;"
+src="https://bandcamp.com/EmbeddedPlayer/album=33132963/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/"
+seamless>
+</iframe>
+
+</div>
+
+<div class="release">
+
+<div class="small-label">
+December 2023
+</div>
+
+<h3>
+mental_filter
+</h3>
+
+<p>
+Genre-fluid guided journey through dark ambience,
+floating harmonies and emotional rupture.
+</p>
+
+<iframe
+style="height:620px;"
+src="https://bandcamp.com/EmbeddedPlayer/album=112079782/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=true/transparent=true/"
+seamless>
+</iframe>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+HELLEROID.SPACE
+</p>
+
+<p>
+connected to INNERINTER.NET
+</p>
+
+</footer>
 
 </body>
 </html>
+```
+
